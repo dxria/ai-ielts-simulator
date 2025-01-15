@@ -1,5 +1,6 @@
-import IntlProvider from "@/providers/intl-provider";
-import UiProvider, { type UiProviderProps } from "@/providers/ui-provider";
+import AuthProvider from '@/providers/auth-provider';
+import IntlProvider from '@/providers/intl-provider';
+import UiProvider, { type UiProviderProps } from '@/providers/ui-provider';
 
 export default function Providers({
     children,
@@ -7,7 +8,9 @@ export default function Providers({
 }: React.PropsWithChildren<UiProviderProps>) {
     return (
         <IntlProvider>
-            <UiProvider viewport={viewport}>{children}</UiProvider>
+            <AuthProvider>
+                <UiProvider viewport={viewport}>{children}</UiProvider>
+            </AuthProvider>
         </IntlProvider>
     );
 }
