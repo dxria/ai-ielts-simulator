@@ -2,5 +2,8 @@
     "main": {
         "meta-title": ".",
         "meta-description": "."
+    },
+    "toast": {
+        "success-session-created": "Session created"
     }
 }

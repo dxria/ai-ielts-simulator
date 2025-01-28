@@ -1,3 +1,3 @@
 export default function Main() {
-    return <>hi</>;
+    return <h1>hi</h1>;
 }

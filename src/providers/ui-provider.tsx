@@ -1,9 +1,13 @@
-"use client";
+'use client';
 
-import { ThemeProvider } from "@emotion/react";
-import { CssBaseline } from "@mui/material";
-import { useMemo } from "react";
-import createTheme from "@/ui/theme";
+import { useMemo } from 'react';
+
+import { ThemeProvider } from '@emotion/react';
+import { CssBaseline } from '@mui/material';
+
+import createTheme from '@/ui/theme';
+
+import { ToastProvider } from './toast.provider';
 
 export interface UiProviderProps {
     viewport: Viewport;
@@ -24,6 +28,7 @@ export default function UiProvider({
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
+            <ToastProvider />
             {children}
         </ThemeProvider>
     );

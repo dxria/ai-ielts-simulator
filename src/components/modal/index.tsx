@@ -1,14 +1,16 @@
-"use client";
+'use client';
+import { useState } from 'react';
+
 import {
-    type DialogProps,
+    Backdrop,
     Dialog,
     DialogContent,
+    type DialogProps,
     DialogTitle,
-    Backdrop,
     IconButton,
-} from "@mui/material";
-import { useState } from "react";
-import { Icon } from "@/components/icon";
+} from '@mui/material';
+
+import { Icon } from '@/components/icon';
 
 export type BaseModalProps = {
     onClose(): void;
@@ -16,7 +18,7 @@ export type BaseModalProps = {
 };
 
 type ModalProps = BaseModalProps & {
-    maxWidth?: DialogProps["maxWidth"];
+    maxWidth?: DialogProps['maxWidth'];
     title: React.ReactNode;
 };
 
@@ -37,10 +39,10 @@ export function useModalState() {
 
 export function Modal({
     open,
-    onClose,
     title,
+    onClose,
     children,
-    maxWidth = "md",
+    maxWidth = 'md',
 }: React.PropsWithChildren<ModalProps>) {
     return (
         <Dialog
@@ -48,10 +50,23 @@ export function Modal({
             disableRestoreFocus
             open={open}
             maxWidth={maxWidth}
+            slots={{
+                backdrop: () => (
+                    <Backdrop
+                        open={open}
+                        sx={{
+                            backgroundColor: '#090F4E20',
+                        }}
+                        onClick={onClose}
+                    />
+                ),
+            }}
             PaperProps={{
                 sx: {
-                    borderRadius: { xs: 5, sm: 10 },
-                    boxShadow: "none",
+                    gap: 2,
+                    width: '100%',
+                    boxShadow: 'none',
+                    borderRadius: { xs: 5, sm: 7 },
                     p: {
                         xs: 3,
                         sm: 5,
@@ -61,39 +76,23 @@ export function Modal({
                         sm: 6,
                         md: 8,
                     },
-                    width: "100%",
-                    gap: 2,
                 },
-            }}
-            slots={{
-                backdrop: () => (
-                    <Backdrop
-                        open={open}
-                        onClick={onClose}
-                        sx={{
-                            backgroundColor: "#090F4E20",
-                        }}
-                    />
-                ),
             }}
             onClose={onClose}>
             <IconButton
-                onClick={onClose}
                 sx={{
-                    position: "absolute",
-                    right: { xs: 16, sm: 24 },
-                    top: { xs: 16, sm: 24 },
                     p: 0,
-                }}>
-                <Icon size={22} name="close" />
+                    position: 'absolute',
+                    top: { xs: 16, sm: 24 },
+                    right: { xs: 16, sm: 24 },
+                }}
+                onClick={onClose}>
+                <Icon size={22} name='close' />
             </IconButton>
 
-            <DialogTitle sx={{ textAlign: "center", padding: 0 }}>
-                {title}
-            </DialogTitle>
+            <DialogTitle sx={{ padding: 0, textAlign: 'center' }}>{title}</DialogTitle>
 
-            <DialogContent
-                sx={{ textAlign: "center", padding: 0, fontWeight: 200 }}>
+            <DialogContent sx={{ padding: 0, fontWeight: 200, textAlign: 'center' }}>
                 {children}
             </DialogContent>
         </Dialog>
