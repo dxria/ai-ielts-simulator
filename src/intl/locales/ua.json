@@ -4,6 +4,6 @@
         "meta-description": "."
     },
     "toast": {
-        "success-session-created": "Session created"
+        "success-assignment-created": "Session created"
     }
 }

@@ -9,8 +9,8 @@ declare global {
 
     // eslint-disable-next-line no-var
     var prisma: undefined | ReturnType<typeof prismaClientSingleton>;
-    interface PageProps {
-        params: Promise<{ locale: Locale }>;
-        searchParams: { [key: string]: string | string[] | undefined };
+    interface PageProps<P = {}, SP = { [key: string]: string | string[] | undefined }> {
+        params: Promise<{ locale: Locale } & P>;
+        searchParams: Promise<SP>;
     }
 }

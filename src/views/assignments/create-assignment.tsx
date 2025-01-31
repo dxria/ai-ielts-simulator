@@ -10,17 +10,17 @@ import {
     Typography,
 } from '@mui/material';
 
-import { useCreateSession } from '@/api/hooks';
+import { useCreateAssignment } from '@/api/hooks';
 import { SubmitButton } from '@/components/form/submit-button';
 import { Modal, useModalState } from '@/components/modal';
 
-export default function AddSession() {
+export default function CreateAssignment() {
     const modalState = useModalState();
 
     const [difficulty, setDifficulty] = useState<string>('easy');
 
     const { user } = useUser();
-    const { loading, createSession } = useCreateSession();
+    const { loading, createAssignment } = useCreateAssignment();
 
     const handleDifficulty = (
         event: React.MouseEvent<HTMLElement>,
@@ -66,7 +66,7 @@ export default function AddSession() {
                         submitting={loading}
                         onClick={async () => {
                             const input = { difficulty, userId: user?.id ?? '' };
-                            await createSession(input);
+                            await createAssignment(input);
                             modalState.triggerClose();
                         }}>
                         {loading ? 'creating' : 'create'}

@@ -8,15 +8,25 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model User {
-  id    Int    @id @default(autoincrement())
-  email String @unique
-}
-
-model Test {
+model Assignment {
   id         Int      @id @default(autoincrement())
   createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
   difficulty String
   questions  Json
   user       String
+}
+
+model Performance {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  user      String
+}
+
+model Evaluation {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  user      String
 }

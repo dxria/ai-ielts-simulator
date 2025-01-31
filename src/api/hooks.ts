@@ -1,29 +1,48 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { useResponseStatus } from '@/hooks/use-response-status';
 
 import * as actions from './actions';
+import { GetAssignmentInput } from './dto';
 
-const queryKey = ['session'];
+const queryKey = ['assignment'];
 
-export function useCreateSession() {
+export function useCreateAssignment() {
     const queryClient = useQueryClient();
     const status = useResponseStatus();
 
-    const { isPending, mutateAsync: createSession } = useMutation({
+    const { isPending, mutateAsync: createAssignment } = useMutation({
         onError: status.error,
-        mutationFn: actions.createSession,
+        mutationFn: actions.createAssignment,
         onSuccess() {
             queryClient.invalidateQueries({
                 queryKey: queryKey,
             });
 
-            status.success('success-session-created');
+            status.success('success-assignment-created');
         },
     });
 
     return {
-        createSession,
+        createAssignment,
         loading: isPending,
     };
+}
+
+export function useAssignment(input: GetAssignmentInput) {
+    const { data, isPending: loading } = useQuery({
+        queryKey: [...queryKey, input.assignmentId],
+        queryFn: () => actions.getAssignment({ ...input }),
+    });
+
+    return { data, loading };
+}
+
+export function useAssignments(input: { userId: string }) {
+    const { data, isPending: loading } = useQuery({
+        queryKey: [...queryKey],
+        queryFn: () => actions.getAssignments({ ...input }),
+    });
+
+    return { data, loading };
 }
