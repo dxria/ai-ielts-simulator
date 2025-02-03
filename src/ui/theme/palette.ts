@@ -1,27 +1,33 @@
-import type { PaletteOptions } from "@mui/material";
+import type { PaletteOptions } from '@mui/material';
 
 const palette: PaletteOptions = {
-    error: {
-        main: "#EB1C24",
-    },
+    divider: '#D6DDED',
     info: {
-        main: "#FFBC20",
+        main: '#FFBC20',
     },
-    primary: {
-        main: "#00ADEF",
-    },
-    secondary: {
-        main: "#090F4E",
+    error: {
+        main: '#E53E3E',
     },
     success: {
-        main: "#2ED73C",
+        main: '#52DBB2',
+    },
+    white: {
+        main: '#fff',
+        a60: '#ffffff99',
+    },
+    primary: {
+        main: '#4FD1C5',
+        a10: '#4FD1C51a',
+    },
+    secondary: {
+        main: '#00ADFE',
+        a20: '#00adfe33',
     },
     text: {
-        primary: "#090F4E",
-        secondary: "#63657E",
-        disabled: "#B5B5BD",
+        primary: '#252432',
+        disabled: '#B5B5BD',
+        secondary: '#8987A1',
     },
-    divider: "#E4E4E6",
 };
 
 export default palette;

@@ -1,7 +1,78 @@
 {
+    "header": {
+        "home": "Home",
+        "what-we-offer": "What We Offer",
+        "faq": "FAQ",
+        "get-in-touch": "Get In Touch",
+        "sign-in": "Sign In",
+        "sign-up": "Sign Up",
+        "sign-out": "Sign Out"
+    },
+    "footer": {
+        "text": "SpeakPro is an independent AI-powered IELTS preparation tool. It is not affiliated with or endorsed by Cambridge English, the British Council, or IDP Education. IELTS is a registered trademark of its respective owners. All content provided is for educational purposes only."
+    },
     "main": {
         "meta-title": ".",
-        "meta-description": "."
+        "meta-description": ".",
+        "hero-section": {
+            "title": "SpeakPro – Your AI Coach for IELTS Speaking Success",
+            "button": "Get in touch"
+        },
+        "what-we-offer": {
+            "title": "What We Offer",
+            "propositions": {
+                "title-1": "Realistic Simulation",
+                "content-1": "Experience IELTS-style speaking tests in an AI-driven environment, just like the real exam.",
+                "title-2": "Instant Feedback",
+                "content-2": "Get AI-generated evaluations on fluency, coherence, vocabulary, and pronunciation.",
+                "title-3": "Smart Scoring",
+                "content-3": "Receive IELTS band predictions and detailed analysis of your performance.",
+                "title-4": "Personalized Practice",
+                "content-4": "Adaptive learning paths tailored to your strengths and weaknesses.",
+                "title-5": "Topic Variety",
+                "content-5": "Access a vast collection of IELTS Part 1, Part 2, and Part 3 questions.",
+                "title-6": "Progress Tracking",
+                "content-6": "Monitor improvements with AI-driven insights and performance history."
+            }
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "questions": {
+                "question-1": "How does SpeakPro evaluate my speaking skills",
+                "answer-1": "SpeakPro uses AI to analyze your speech based on IELTS scoring criteria, providing detailed feedback on fluency, vocabulary, and coherence.",
+                "question-2": "Can I practice all three parts of the IELTS Speaking test?",
+                "answer-2": "Yes! SpeakPro includes Part 1 (interview), Part 2 (cue card task), and Part 3 (discussion), simulating the real test environment.",
+                "question-3": "Does SpeakPro provide a score prediction?",
+                "answer-3": "Yes, our AI model predicts your estimated IELTS Speaking band score based on your responses.",
+                "question-4": "Can I track my progress over time?",
+                "answer-4": "Absolutely! Your past performances, scores, and feedback are stored so you can track improvements and focus on weak areas.",
+                "question-5": "Is SpeakPro suitable for beginners?",
+                "answer-5": "Yes! Whether you're just starting or aiming for Band 8+, SpeakPro adapts to your skill level and provides targeted exercises."
+            }
+        },
+        "get-in-touch": {
+            "title": "Let’s Get in Touch",
+            "form": {
+                "name-placeholder": "Full name",
+                "email-placeholder": "Email",
+                "message-placeholder": "Message",
+                "send-button": "Get in Touch",
+                "personal-data": "I give my consent to the processing of my personal data.",
+                "empty-field-helper": "Fill in this field.",
+                "email-validation-helper": "Wrong email format",
+                "too-long-validation-helper": "Entered text is too long."
+            },
+            "dialog": {
+                "success-true": {
+                    "title": "Thank you!",
+                    "content": "We have received your message and will get back to you shortly."
+                },
+                "success-false": {
+                    "title": "Oops, something went wrong...",
+                    "content": "We apologize for technical problems, try again later."
+                }
+            }
+        }
     },
     "toast": {
         "success-assignment-created": "Session created"

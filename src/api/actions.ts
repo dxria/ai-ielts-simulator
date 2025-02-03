@@ -1,5 +1,5 @@
 import client from './client';
-import { CreateAssignmentInput, GetAssignmentInput } from './dto';
+import { ContactInput, CreateAssignmentInput, GetAssignmentInput } from './dto';
 
 export async function createAssignment(input: CreateAssignmentInput) {
     const res = await client.post('/assignment', input);
@@ -18,4 +18,10 @@ export async function getAssignments(input: { userId: string }) {
         params: input,
     });
     return res.data;
+}
+
+export async function contact(input: ContactInput): Promise<{
+    success: boolean;
+}> {
+    return client.post('/get-in-touch', { data: input });
 }
