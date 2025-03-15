@@ -11,14 +11,7 @@ import Logo from './logo';
 export function Footer() {
     const t = useTranslations();
     return (
-        <Box
-            pb={15}
-            sx={{
-                backgroundSize: '100%',
-                backgroundPosition: 'top',
-                backgroundRepeat: 'no-repeat',
-                backgroundImage: `url('images/footer-blur.png')`,
-            }}>
+        <Box pb={15}>
             <Box
                 px={9}
                 py={10}

@@ -7,4 +7,5 @@ export type IconName =
 	| "minus"
 	| "plus"
 	| "sun"
-	| "unchecked-box";
+	| "unchecked-box"
+	| "webcam";

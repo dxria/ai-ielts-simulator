@@ -96,7 +96,21 @@ const components: ThemeOptions['components'] = {
                     }),
                 }),
                 ...(ownerState.variant === 'text' && {}),
-                ...(ownerState.variant === 'outlined' && {}),
+                ...(ownerState.variant === 'outlined' && {
+                    padding: '13px 35px',
+                    backgroundColor: 'transparent',
+                    border: '1px solid transparent',
+                    borderRadius: theme.shape.borderRadius * 10,
+                    '&:hover': {
+                        boxShadow: '0px 4px 25px 0px #00adfe33',
+                    },
+                    background:
+                        'linear-gradient(white, white) padding-box, linear-gradient(.04deg, #4FD1C5 .04%, rgba(237,135,4,0) 99.97%) border-box',
+                    transition: theme.transitions.create('box-shadow', {
+                        duration: 500,
+                        easing: theme.transitions.easing.easeInOut,
+                    }),
+                }),
             }),
         },
     },
