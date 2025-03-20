@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 import { CreateAssignmentInput } from '@/api/dto';
+import {
+    transformPrismaQuestionsToResponse,
+    transformQuestionsResponseToPrisma,
+} from '@/api/helpers';
 import ConnectToDB from '@/utils/db-connection';
 import { chatSession } from '@/utils/gemini-ai';
 
@@ -20,8 +24,12 @@ export async function POST(req: NextRequest) {
         );
 
         const entry = await prisma.assignment.create({
-            data: { questions: data, user: userId ?? '10', difficulty: difficulty },
+            data: { user: userId ?? '10', difficulty: difficulty },
         });
+
+        const questions = transformQuestionsResponseToPrisma(data, entry.id);
+        await prisma.question.createMany({ data: questions });
+
         return NextResponse.json(entry, { status: 200 });
     } catch (error) {
         return NextResponse.json({ message: error }, { status: 500 });
@@ -37,10 +45,17 @@ export async function GET(req: NextRequest) {
         const userId = searchParams.get('userId') ?? '';
 
         const assignment = await prisma.assignment.findUnique({
+            include: { questions: true },
             where: { user: userId, id: +assignmentId },
         });
+        const transformedResponse = transformPrismaQuestionsToResponse(
+            assignment.questions,
+        );
 
-        return NextResponse.json(assignment, { status: 200 });
+        return NextResponse.json(
+            { ...assignment, questions: transformedResponse },
+            { status: 200 },
+        );
     } catch (error) {
         return NextResponse.json({ message: error }, { status: 500 });
     }

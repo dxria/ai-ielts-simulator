@@ -8,7 +8,7 @@ import dayjs from '@/config/date';
 
 export default function AssignmentCard({ data }: { data: Assignment }) {
     const t = useTranslations();
-
+    console.log(data);
     return (
         <Stack
             p={2}
