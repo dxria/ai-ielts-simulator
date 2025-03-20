@@ -21,17 +21,17 @@ export function Header() {
             position='sticky'
             justifyContent='center'>
             <Box
-                mt={2}
                 px={3}
                 py={1}
-                width={1000}
                 minWidth={600}
                 display='flex'
-                maxWidth={1200}
-                borderRadius={10}
                 bgcolor='white.a60'
                 alignItems='center'
-                justifyContent='space-between'>
+                mt={isSignedIn ? 0 : 2}
+                justifyContent='space-between'
+                width={isSignedIn ? '100%' : 1000}
+                borderRadius={isSignedIn ? 0 : 10}
+                maxWidth={isSignedIn ? '100%' : 1200}>
                 <Logo />
 
                 <Box gap={5} display='flex' alignItems='center'>

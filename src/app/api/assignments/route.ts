@@ -11,6 +11,7 @@ export async function GET(req: NextRequest) {
 
         const assignments = await prisma.assignment.findMany({
             where: { user: userId },
+            orderBy: { createdAt: 'desc' },
         });
 
         return NextResponse.json(assignments, { status: 200 });

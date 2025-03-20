@@ -15,13 +15,14 @@ const palette: PaletteOptions = {
         main: '#fff',
         a60: '#ffffff99',
     },
-    primary: {
-        main: '#4FD1C5',
-        a10: '#4FD1C51a',
-    },
     secondary: {
         main: '#00ADFE',
         a20: '#00adfe33',
+    },
+    primary: {
+        main: '#4FD1C5',
+        a10: '#4FD1C51a',
+        light: '#F8FDFD',
     },
     text: {
         primary: '#252432',

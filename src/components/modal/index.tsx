@@ -54,9 +54,7 @@ export function Modal({
                 backdrop: () => (
                     <Backdrop
                         open={open}
-                        sx={{
-                            backgroundColor: '#090F4E20',
-                        }}
+                        sx={{ backgroundColor: '#090F4E20' }}
                         onClick={onClose}
                     />
                 ),
@@ -90,7 +88,7 @@ export function Modal({
                 <Icon size={22} name='close' />
             </IconButton>
 
-            <DialogTitle sx={{ padding: 0, textAlign: 'center' }}>{title}</DialogTitle>
+            <DialogTitle sx={{ padding: 0 }}>{title}</DialogTitle>
 
             <DialogContent sx={{ padding: 0, fontWeight: 200, textAlign: 'center' }}>
                 {children}

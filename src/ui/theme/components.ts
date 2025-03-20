@@ -73,7 +73,7 @@ const components: ThemeOptions['components'] = {
         styleOverrides: {
             root: ({ theme, ownerState }) => ({
                 fontSize: 14,
-                fontWeight: 400,
+                fontWeight: 500,
                 boxShadow: 'none',
                 textTransform: 'none',
                 fontFamily: FixelDisplay.style.fontFamily,
@@ -116,6 +116,31 @@ const components: ThemeOptions['components'] = {
     },
     MuiTypography: {
         styleOverrides: {
+            body1({ theme }) {
+                return {
+                    [theme.breakpoints.up('sm')]: {
+                        fontSize: 20,
+                        color: theme.palette.text.primary,
+                    },
+                    [theme.breakpoints.down('sm')]: {
+                        fontSize: 16,
+                        color: theme.palette.text.primary,
+                    },
+                };
+            },
+
+            body2({ theme }) {
+                return {
+                    [theme.breakpoints.up('sm')]: {
+                        fontSize: 14,
+                        color: theme.palette.text.secondary,
+                    },
+                    [theme.breakpoints.down('sm')]: {
+                        fontSize: 14,
+                        color: theme.palette.text.secondary,
+                    },
+                };
+            },
             h2({ theme }) {
                 return {
                     [theme.breakpoints.up('lg')]: {
@@ -132,7 +157,6 @@ const components: ThemeOptions['components'] = {
                     },
                 };
             },
-
             h3({ theme }) {
                 return {
                     [theme.breakpoints.up('lg')]: {
@@ -146,22 +170,6 @@ const components: ThemeOptions['components'] = {
                     [theme.breakpoints.between('sm', 'lg')]: {
                         fontSize: 24,
                         fontWeight: 500,
-                    },
-                };
-            },
-            body1({ theme }) {
-                return {
-                    [theme.breakpoints.up('lg')]: {
-                        fontSize: 20,
-                        fontWeight: 200,
-                    },
-                    [theme.breakpoints.down('sm')]: {
-                        fontSize: 16,
-                        fontWeight: 200,
-                    },
-                    [theme.breakpoints.between('sm', 'lg')]: {
-                        fontSize: 16,
-                        fontWeight: 200,
                     },
                 };
             },
@@ -181,25 +189,6 @@ const components: ThemeOptions['components'] = {
                         fontSize: 16,
                         fontWeight: 500,
                         lineHeight: '23px',
-                    },
-                };
-            },
-            body2({ theme }) {
-                return {
-                    [theme.breakpoints.up('lg')]: {
-                        fontSize: 14,
-                        fontWeight: 300,
-                        color: theme.palette.text.secondary,
-                    },
-                    [theme.breakpoints.down('sm')]: {
-                        fontSize: 14,
-                        fontWeight: 300,
-                        color: theme.palette.text.secondary,
-                    },
-                    [theme.breakpoints.between('sm', 'lg')]: {
-                        fontSize: 14,
-                        fontWeight: 300,
-                        color: theme.palette.text.secondary,
                     },
                 };
             },

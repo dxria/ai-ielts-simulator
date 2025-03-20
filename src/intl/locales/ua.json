@@ -76,5 +76,28 @@
     },
     "toast": {
         "success-assignment-created": "Session created"
+    },
+    "linking": {
+        "assignments": "Тести",
+        "dashboard": "Дашбоард"
+    },
+    "action": {
+        "create": "Створити",
+        "creating": "Створюємо",
+        "cancel": "Скасувати"
+    },
+    "assignments": {
+        "title": "Тести",
+        "card": {
+            "created-at": "Створено",
+            "level": "Рівень",
+            "main-topics": "Ключові теми"
+        },
+        "button": "Додати новий тест"
+    },
+    "level": {
+        "easy": "Легкий",
+        "medium": "Середній",
+        "hard": "Просунутий"
     }
 }

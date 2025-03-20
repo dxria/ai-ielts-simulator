@@ -1,21 +1,32 @@
 'use client';
+import { useUser } from '@clerk/nextjs';
 import { Box } from '@mui/material';
 
-import { Container } from './container';
+import { Header } from './header';
+import Sidebar from './sidebar';
 
+function Layout({ children }: React.PropsWithChildren) {
+    return (
+        <Box width='100%' sx={{ minHeight: '100vh' }} mb={{ md: 0, xs: 0, lg: 0 }}>
+            {children}
+        </Box>
+    );
+}
 export default function BaseLayout({ children }: React.PropsWithChildren) {
+    const { isSignedIn } = useUser();
+
     return (
         <Box bgcolor={(theme) => theme.palette.primary.a10}>
-            <Box
-                mb={{ md: 0, xs: 0, lg: 0 }}
-                sx={{
-                    backgroundSize: '100%',
-                    backgroundPosition: 'bottom',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundImage: `url('images/footer-blur.png')`,
-                }}>
-                <Container>{children}</Container>
-            </Box>
+            {isSignedIn ? (
+                <Sidebar>
+                    <Layout>{children}</Layout>
+                </Sidebar>
+            ) : (
+                <>
+                    <Header />
+                    <Layout>{children}</Layout>
+                </>
+            )}
         </Box>
     );
 }

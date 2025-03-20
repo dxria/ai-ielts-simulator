@@ -2,8 +2,12 @@
 
 export type IconName =
 	| "audio-lines"
+	| "chart"
 	| "checked-box"
+	| "chevron-right"
+	| "clipboard"
 	| "close"
+	| "lightbulb"
 	| "minus"
 	| "plus"
 	| "sun"

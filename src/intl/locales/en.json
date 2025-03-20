@@ -76,5 +76,28 @@
     },
     "toast": {
         "success-assignment-created": "Session created"
+    },
+    "linking": {
+        "assignments": "Assignments",
+        "dashboard": "Dashboard"
+    },
+    "action": {
+        "create": "Create",
+        "creating": "Creating",
+        "cancel": "Cancel"
+    },
+    "assignments": {
+        "title": "Assignments",
+        "card": {
+            "created-at": "Created at",
+            "level": "Level",
+            "main-topics": "Main topics"
+        },
+        "button": "Add new session"
+    },
+    "level": {
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard"
     }
 }
