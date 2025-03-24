@@ -5,12 +5,15 @@ declare module '@mui/material/styles' {
         a10?: string;
         a20?: string;
         a30?: string;
+        a40?: string;
+        a60?: string;
     }
 
     interface PaletteColor extends PaletteColor {
         a10?: string;
         a20?: string;
         a30?: string;
+        a40?: string;
         a60?: string;
     }
 

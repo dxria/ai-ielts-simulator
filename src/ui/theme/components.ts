@@ -99,11 +99,9 @@ const components: ThemeOptions['components'] = {
                 ...(ownerState.variant === 'outlined' && {
                     padding: '13px 35px',
                     backgroundColor: 'transparent',
-                    border: '1px solid transparent',
+                    border: '2x solid transparent',
                     borderRadius: theme.shape.borderRadius * 10,
-                    '&:hover': {
-                        boxShadow: '0px 4px 25px 0px #00adfe33',
-                    },
+                    '&:hover': { boxShadow: '0px 4px 25px 0px #00adfe33' },
                     background:
                         'linear-gradient(white, white) padding-box, linear-gradient(.04deg, #4FD1C5 .04%, rgba(237,135,4,0) 99.97%) border-box',
                     transition: theme.transitions.create('box-shadow', {
@@ -116,6 +114,19 @@ const components: ThemeOptions['components'] = {
     },
     MuiTypography: {
         styleOverrides: {
+            h6({ theme }) {
+                return {
+                    [theme.breakpoints.up('sm')]: {
+                        fontSize: 24,
+                        fontWeight: 600,
+                    },
+                    [theme.breakpoints.down('sm')]: {
+                        fontSize: 20,
+                        fontWeight: 600,
+                    },
+                };
+            },
+
             body1({ theme }) {
                 return {
                     [theme.breakpoints.up('sm')]: {
@@ -128,7 +139,6 @@ const components: ThemeOptions['components'] = {
                     },
                 };
             },
-
             body2({ theme }) {
                 return {
                     [theme.breakpoints.up('sm')]: {
@@ -170,25 +180,6 @@ const components: ThemeOptions['components'] = {
                     [theme.breakpoints.between('sm', 'lg')]: {
                         fontSize: 24,
                         fontWeight: 500,
-                    },
-                };
-            },
-            h6({ theme }) {
-                return {
-                    [theme.breakpoints.up('lg')]: {
-                        fontSize: 24,
-                        fontWeight: 500,
-                        lineHeight: '23px',
-                    },
-                    [theme.breakpoints.down('sm')]: {
-                        fontSize: 20,
-                        fontWeight: 500,
-                        lineHeight: '23px',
-                    },
-                    [theme.breakpoints.between('sm', 'lg')]: {
-                        fontSize: 16,
-                        fontWeight: 500,
-                        lineHeight: '23px',
                     },
                 };
             },

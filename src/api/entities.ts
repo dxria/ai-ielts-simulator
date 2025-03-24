@@ -7,19 +7,38 @@ export type Assignment = {
     user: string;
 };
 
-export type QuestionsResponse = {
-    part1: Question[];
-    part2: QuestionWithPrompt[];
-    part3: Question[];
+export type QuestionsAIResponse = {
+    part1: {
+        questions: string[];
+        topic: string;
+    }[];
+    part2: {
+        prompt: string;
+        question: string;
+        topic: string;
+    }[];
+    part3: {
+        questions: string[];
+        topic: string;
+    }[];
 };
-
+export type QuestionsResponse = {
+    part1: RegularQuestion[];
+    part2: QuestionWithPrompt[];
+    part3: RegularQuestion[];
+};
 export type QuestionWithPrompt = {
+    id: number;
     prompt: string;
     question: string;
     topic: string;
 };
+export type RegularQuestion = {
+    questions: Question[];
+    topic: string;
+};
 
 export type Question = {
-    questions: string[];
-    topic: string;
+    id: number;
+    question: string;
 };

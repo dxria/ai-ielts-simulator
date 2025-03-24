@@ -3,6 +3,7 @@
 export type IconName =
 	| "audio-lines"
 	| "chart"
+	| "check"
 	| "checked-box"
 	| "chevron-right"
 	| "clipboard"
@@ -10,6 +11,7 @@ export type IconName =
 	| "lightbulb"
 	| "minus"
 	| "plus"
+	| "question"
 	| "sun"
 	| "unchecked-box"
 	| "webcam";

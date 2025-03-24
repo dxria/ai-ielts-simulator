@@ -8,3 +8,5 @@ export type ContactInput = {
     message: string;
     name: string;
 };
+
+export type AssignmentAnswerInput = Record<number, string>;

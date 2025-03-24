@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
         );
 
         const entry = await prisma.assignment.create({
-            data: { user: userId ?? '10', difficulty: difficulty },
+            data: { difficulty, user: userId ?? '10' },
         });
 
         const questions = transformQuestionsResponseToPrisma(data, entry.id);

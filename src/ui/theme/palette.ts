@@ -19,15 +19,18 @@ const palette: PaletteOptions = {
         main: '#00ADFE',
         a20: '#00adfe33',
     },
-    primary: {
-        main: '#4FD1C5',
-        a10: '#4FD1C51a',
-        light: '#F8FDFD',
-    },
     text: {
         primary: '#252432',
         disabled: '#B5B5BD',
         secondary: '#8987A1',
+    },
+    primary: {
+        main: '#4FD1C5',
+        a10: '#4FD1C51a',
+        a20: '#4fd1c533',
+        a30: '#4fd1c54d',
+        a40: '#4fd1c566',
+        light: '#F8FDFD',
     },
 };
 

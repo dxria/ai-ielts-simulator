@@ -12,7 +12,7 @@ type PageHeaderProps = {
 
 export function PageTitle({ children }: React.PropsWithChildren) {
     return (
-        <Typography variant='h5' fontWeight='600'>
+        <Typography variant='h6' fontWeight='600'>
             {children}
         </Typography>
     );

@@ -1,9 +1,14 @@
 import { Question as QuestionEntity } from '@prisma/client';
 
-import { Question, QuestionsResponse, QuestionWithPrompt } from './entities';
+import {
+    QuestionsAIResponse,
+    QuestionsResponse,
+    QuestionWithPrompt,
+    RegularQuestion,
+} from './entities';
 
 export function transformQuestionsResponseToPrisma(
-    response: QuestionsResponse,
+    response: QuestionsAIResponse,
     assignmentId: number,
 ): any {
     const transformedQuestions: any = [];
@@ -30,7 +35,12 @@ export function transformQuestionsResponseToPrisma(
                 });
             });
         } else {
-            (questions as Question[]).forEach((q) => {
+            (
+                questions as {
+                    questions: string[];
+                    topic: string;
+                }[]
+            ).forEach((q) => {
                 q.questions.forEach((questionText) => {
                     transformedQuestions.push({
                         assignmentId,
@@ -64,7 +74,7 @@ export function transformPrismaQuestionsToResponse(
             acc[question.part].push(question);
             return acc;
         },
-        {} as Record<number, Question[]>,
+        {} as Record<number, QuestionEntity[]>,
     );
 
     Object.entries(groupedByPart).forEach(([part, partQuestions]) => {
@@ -73,12 +83,18 @@ export function transformPrismaQuestionsToResponse(
 
             partQuestions.forEach((q) => {
                 if (q.type === 'PROMPT') {
-                    prompts[q.topic] = { question: '', prompt: q.text, topic: q.topic };
+                    prompts[q.topic] = {
+                        id: q.id,
+                        question: '',
+                        prompt: q.text,
+                        topic: q.topic,
+                    };
                 } else if (q.type === 'QUESTION') {
                     if (prompts[q.topic]) {
                         prompts[q.topic].question = q.text;
                     } else {
                         prompts[q.topic] = {
+                            id: q.id,
                             prompt: '',
                             topic: q.topic,
                             question: q.text,
@@ -89,13 +105,13 @@ export function transformPrismaQuestionsToResponse(
 
             response.part2 = Object.values(prompts);
         } else {
-            const topicMap: Record<string, Question> = {};
+            const topicMap: Record<string, RegularQuestion> = {};
 
             partQuestions.forEach((q) => {
                 if (!topicMap[q.topic]) {
                     topicMap[q.topic] = { questions: [], topic: q.topic };
                 }
-                topicMap[q.topic].questions.push(q.text);
+                topicMap[q.topic].questions.push({ id: q.id, question: q.text });
             });
 
             if (parseInt(part) === 1) {
