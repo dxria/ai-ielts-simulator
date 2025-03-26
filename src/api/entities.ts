@@ -28,6 +28,7 @@ export type QuestionsResponse = {
     part3: RegularQuestion[];
 };
 export type QuestionWithPrompt = {
+    answer?: string;
     id: number;
     prompt: string;
     question: string;
@@ -39,6 +40,26 @@ export type RegularQuestion = {
 };
 
 export type Question = {
+    answer?: string;
     id: number;
     question: string;
+};
+
+export type Feedback = {
+    overall_feedback: string;
+    part1: FeedbackPart;
+    part2: FeedbackPart;
+    part3: FeedbackPart;
+};
+
+export type FeedbackPart = {
+    questions: {
+        answer: string;
+        comments: string;
+        fluency_and_coherence: string;
+        grammatical_range_and_accuracy: string;
+        id: number;
+        lexical_resource: string;
+    }[];
+    topic: string;
 };

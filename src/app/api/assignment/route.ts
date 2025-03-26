@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
         const { userId, difficulty }: CreateAssignmentInput = await req.json();
 
         const result =
-            await chatSession.sendMessage(`Please, generate questions for three parts of ielts speaking exam in json forma. The difficulty of questions: ${difficulty}. Third part has to be connected with second one. Give your answer as JSON object with strictly these fields: 
+            await chatSession.sendMessage(`Please, generate questions for three parts of ielts speaking exam in json format. The difficulty of questions: ${difficulty}. Third part has to be connected with second one. Give your answer as JSON object with strictly these fields: 
         {"part1": [{"topic": "", "questions": ["", "", ""]},  ..., ...],
          "part2": [{"topic": "", "question":  "", "prompt": ""}],
          "part3": [{"topic": "", "questions": ["", "", ""]}]}`);
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
         );
 
         const entry = await prisma.assignment.create({
-            data: { difficulty, user: userId ?? '10' },
+            data: { difficulty, user: userId },
         });
 
         const questions = transformQuestionsResponseToPrisma(data, entry.id);

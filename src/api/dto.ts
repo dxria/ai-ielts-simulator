@@ -10,3 +10,23 @@ export type ContactInput = {
 };
 
 export type AssignmentAnswerInput = Record<number, string>;
+
+export type SavePerformanceInput = {
+    assignmentId: number;
+    endTime: Date;
+    startTime: Date;
+    userId: string;
+};
+
+export type SaveAnswersInput = {
+    answers: AssignmentAnswerInput;
+    assignmentId: number;
+    performanceId: number;
+    userId: string;
+};
+
+export type GetEvaluatedInput = {
+    assignmentId: number;
+    performanceId: number;
+    userId: string;
+};

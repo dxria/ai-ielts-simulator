@@ -1,7 +1,9 @@
-import { redirect } from 'next/navigation';
+import { metadata } from '@/intl/metadata';
+import { NotFound } from '@/views/not-found';
 
-export default async function NotFound({ params }: PageProps) {
-    const locale = (await params).locale;
+export const generateMetadata = metadata('not-found');
 
-    redirect('/' + locale);
+export default async function Page({ params }: PageProps) {
+    const { locale } = await params;
+    return <NotFound locale={locale} />;
 }

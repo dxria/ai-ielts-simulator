@@ -12,8 +12,8 @@
         "text": "SpeakPro is an independent AI-powered IELTS preparation tool. It is not affiliated with or endorsed by Cambridge English, the British Council, or IDP Education. IELTS is a registered trademark of its respective owners. All content provided is for educational purposes only."
     },
     "main": {
-        "meta-title": ".",
-        "meta-description": ".",
+        "meta-title": "SpeakPro - IELTS Coach",
+        "meta-description": "SpeakPro - IELTS Coach",
         "hero-section": {
             "title": "SpeakPro – Your AI Coach for IELTS Speaking Success",
             "button": "Get in touch"
@@ -75,7 +75,9 @@
         }
     },
     "toast": {
-        "success-assignment-created": "Session created"
+        "success-assignment-created": "Session created",
+        "success-answers-saved": "Answers were saved",
+        "success-evaluated": "Feedback is ready!"
     },
     "linking": {
         "assignments": "Assignments",
@@ -87,6 +89,9 @@
         "cancel": "Cancel"
     },
     "assignments": {
+        "meta-title": "SpeakPro | Assignments",
+        "meta-description": "SpeakPro | Assignments",
+
         "title": "Assignments",
         "card": {
             "created-at": "Created at",
@@ -95,9 +100,19 @@
         },
         "button": "Add new session"
     },
+    "ongoing-assignment": {
+        "meta-title": "SpeakPro | Ongoing assignment",
+        "meta-description": "SpeakPro |  Ongoing assignment"
+    },
     "level": {
         "easy": "Easy",
         "medium": "Medium",
         "hard": "Hard"
+    },
+    "not-found": {
+        "meta-title": "SpeakPro | Page is Not Found",
+        "meta-description": "Page not found",
+        "description": "Page not found",
+        "button": "To homepage"
     }
 }

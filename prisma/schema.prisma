@@ -42,7 +42,7 @@ model Answer {
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
   speech        String
-  userId        String
+  user          String
   assignment    Assignment  @relation(fields: [assignmentId], references: [id])
   assignmentId  Int
   question      Question    @relation(fields: [questionId], references: [id])
@@ -57,13 +57,19 @@ model Performance {
   updatedAt    DateTime    @default(now())
   user         String
   answers      Answer[]
+  startTime    DateTime
+  endTime      DateTime
   assignment   Assignment? @relation(fields: [assignmentId], references: [id])
   assignmentId Int?
+  evaluation   Evaluation?
 }
 
 model Evaluation {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  userId    String
+  id            Int         @id @default(autoincrement())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @default(now())
+  user          String
+  feedback      String
+  performance   Performance @relation(fields: [performanceId], references: [id])
+  performanceId Int         @unique
 }

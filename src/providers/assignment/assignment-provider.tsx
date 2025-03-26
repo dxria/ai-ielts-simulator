@@ -34,10 +34,7 @@ export function AssignmentProvider({ children }: AssignmentContextProps) {
     const [enabled, setEnabled] = useState<boolean>(false);
     const [started, setStarted] = useState<boolean>(false);
     const [answers, setAnswers] = useState<AssignmentAnswerInput>({});
-    // const [answers, setAnswers] = useLocalStorage<AssignmentAnswerInput>(
-    //     'assignment_answers',
-    //     {},
-    // );
+
     const value: AssignmentContextValue = {
         enabled,
         started,

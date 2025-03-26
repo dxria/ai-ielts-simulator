@@ -46,3 +46,50 @@ export function useAssignments(input: { userId: string }) {
 
     return { data, loading };
 }
+
+export function useSavePerformance() {
+    const queryClient = useQueryClient();
+    const status = useResponseStatus();
+
+    const { isPending, mutateAsync: savePerformance } = useMutation({
+        onError: status.error,
+        mutationFn: actions.savePerformance,
+        onSuccess() {
+            queryClient.invalidateQueries({ queryKey: queryKey });
+        },
+    });
+
+    return { savePerformance, loading: isPending };
+}
+
+export function useSaveAnswers() {
+    const queryClient = useQueryClient();
+    const status = useResponseStatus();
+
+    const { isPending, mutateAsync: saveAnswers } = useMutation({
+        onError: status.error,
+        mutationFn: actions.saveAnswers,
+        onSuccess() {
+            queryClient.invalidateQueries({ queryKey: queryKey });
+            status.success('success-answers-saved');
+        },
+    });
+
+    return { saveAnswers, loading: isPending };
+}
+
+export function useGetEvaluated() {
+    const queryClient = useQueryClient();
+    const status = useResponseStatus();
+
+    const { isPending, mutateAsync: getEvaluated } = useMutation({
+        onError: status.error,
+        mutationFn: actions.getEvaluated,
+        onSuccess() {
+            queryClient.invalidateQueries({ queryKey: queryKey });
+            status.success('success-evaluated');
+        },
+    });
+
+    return { getEvaluated, loading: isPending };
+}

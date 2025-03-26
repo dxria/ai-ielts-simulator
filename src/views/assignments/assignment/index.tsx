@@ -12,7 +12,7 @@ import { PageHeader } from '@/components/page-header';
 import dayjs from '@/config/date';
 import { useAssignmentContext } from '@/providers/assignment/assignment-provider';
 
-import QuestionsSection from './questions-section';
+import OngoingAssignment from './ongoing-assignment';
 import WebCam from './web-cam';
 
 export default function Page({ assignmentId }: { assignmentId: number }) {
@@ -123,5 +123,5 @@ function View({ userId, assignmentId }: GetAssignmentInput) {
         );
     }
 
-    return <QuestionsSection questions={data.questions} />;
+    return <OngoingAssignment questions={data.questions} assignmentId={assignmentId} />;
 }

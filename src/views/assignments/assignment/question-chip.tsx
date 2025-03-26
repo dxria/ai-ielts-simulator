@@ -29,6 +29,7 @@ export function QuestionChip({
                 width: isDone ? 135 : 110,
                 padding: theme.spacing(0.5, 2),
                 borderRadius: theme.spacing(3),
+                cursor: isDone ? 'auto' : 'pointer',
                 transition: (theme) => theme.transitions.create('all'),
                 backgroundColor:
                     questionId === activeId
@@ -43,7 +44,7 @@ export function QuestionChip({
                           ? `${theme.palette.text.disabled} !important`
                           : `${theme.palette.text.primary} !important`,
             })}
-            onClick={onClick}>
+            onClick={() => (isDone ? undefined : onClick())}>
             {text}
             {isDone && <Icon name='check' />}
         </Typography>

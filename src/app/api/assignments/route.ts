@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import { Assignment } from '@prisma/client';
+
 import { transformPrismaQuestionsToResponse } from '@/api/helpers';
 import ConnectToDB from '@/utils/db-connection';
 
@@ -16,7 +18,7 @@ export async function GET(req: NextRequest) {
             orderBy: { createdAt: 'desc' },
         });
 
-        const transformed = assignments.map((a) => ({
+        const transformed = assignments.map((a: Assignment) => ({
             ...a,
             questions: transformPrismaQuestionsToResponse(a.questions),
         }));
