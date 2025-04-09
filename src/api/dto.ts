@@ -30,3 +30,8 @@ export type GetEvaluatedInput = {
     performanceId: number;
     userId: string;
 };
+
+export type GetPerformanceInput = {
+    performanceId: number;
+    userId: string;
+};

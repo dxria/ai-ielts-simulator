@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useResponseStatus } from '@/hooks/use-response-status';
 
 import * as actions from './actions';
-import { GetAssignmentInput } from './dto';
+import { GetAssignmentInput, GetPerformanceInput } from './dto';
 
 const queryKey = ['assignment'];
 
@@ -92,4 +92,13 @@ export function useGetEvaluated() {
     });
 
     return { getEvaluated, loading: isPending };
+}
+
+export function usePerformance(input: GetPerformanceInput) {
+    const { data, isPending: loading } = useQuery({
+        queryKey: [...queryKey],
+        queryFn: () => actions.getPerformance({ ...input }),
+    });
+
+    return { data, loading };
 }

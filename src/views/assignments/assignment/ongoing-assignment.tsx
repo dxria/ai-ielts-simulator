@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import useSpeechToText, { ResultType } from 'react-hook-speech-to-text';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { useUser } from '@clerk/nextjs';
 import { Stack } from '@mui/material';
@@ -12,6 +12,7 @@ import { AssignmentAnswerInput } from '@/api/dto';
 import { Question, QuestionsResponse, QuestionWithPrompt } from '@/api/entities';
 import { useGetEvaluated, useSaveAnswers, useSavePerformance } from '@/api/hooks';
 import { PageHeader } from '@/components/page-header';
+import { redirect } from '@/intl/navigation';
 import { useAssignmentContext } from '@/providers/assignment/assignment-provider';
 
 import QuestionRecordTab from './question-record-tab';
@@ -30,6 +31,7 @@ export default function OngoingAssignment({
     const startTime = new Date();
 
     const { user } = useUser();
+    const locale = useLocale();
     const { results, setResults, isRecording, stopSpeechToText, startSpeechToText } =
         useSpeechToText({ continuous: true, useLegacyResults: false });
 
@@ -76,6 +78,7 @@ export default function OngoingAssignment({
             userId: user?.id,
             performanceId: performance.id,
         });
+        redirect({ locale, href: `/stats/${performance.id}` });
     };
 
     return (

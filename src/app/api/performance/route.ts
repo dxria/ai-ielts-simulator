@@ -18,3 +18,23 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ message: error }, { status: 500 });
     }
 }
+
+export async function GET(req: NextRequest) {
+    try {
+        await ConnectToDB();
+
+        const searchParams = req.nextUrl.searchParams;
+        const userId = searchParams.get('userId') ?? '';
+        const performanceId = searchParams.get('performanceId') ?? '';
+
+        const performance = await prisma.performance.findUnique({
+            include: { evaluation: true },
+            where: { user: userId, id: +performanceId },
+        });
+
+        console.log(performance);
+        return NextResponse.json(performance, { status: 200 });
+    } catch (error) {
+        return NextResponse.json({ message: error }, { status: 500 });
+    }
+}

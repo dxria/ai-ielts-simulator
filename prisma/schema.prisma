@@ -13,11 +13,17 @@ enum QuestionType {
   PROMPT
 }
 
+enum Difficulty {
+  easy
+  medium
+  hard
+}
+
 model Assignment {
   id           Int           @id @default(autoincrement())
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @default(now())
-  difficulty   String
+  difficulty   Difficulty
   user         String
   questions    Question[]
   answers      Answer[]
@@ -69,7 +75,7 @@ model Evaluation {
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @default(now())
   user          String
-  feedback      String
+  feedback      Json
   performance   Performance @relation(fields: [performanceId], references: [id])
   performanceId Int         @unique
 }

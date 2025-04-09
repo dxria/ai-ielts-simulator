@@ -4,6 +4,7 @@ import {
     CreateAssignmentInput,
     GetAssignmentInput,
     GetEvaluatedInput,
+    GetPerformanceInput,
     SaveAnswersInput,
     SavePerformanceInput,
 } from './dto';
@@ -46,5 +47,12 @@ export async function saveAnswers(input: SaveAnswersInput) {
 
 export async function getEvaluated(input: GetEvaluatedInput) {
     const res = await client.post('/evaluation', input);
+    return res.data;
+}
+
+export async function getPerformance(input: GetPerformanceInput) {
+    const res = await client.get<Assignment[]>('/performance', {
+        params: input,
+    });
     return res.data;
 }
