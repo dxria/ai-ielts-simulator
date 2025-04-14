@@ -1,11 +1,11 @@
-'use server'
+'use server';
 
-import { cookies } from 'next/headers'
+import { cookies } from 'next/headers';
 
 export const context = async () => {
-    const cookieList = cookies()
+    const cookieList = cookies();
 
     return {
         cookie: cookieList.toString(),
-    }
-}
+    };
+};

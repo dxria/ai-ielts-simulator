@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { styled } from '@mui/material'
-import { MaterialDesignContent, SnackbarProvider } from 'notistack'
+import { styled } from '@mui/material';
+import { MaterialDesignContent, SnackbarProvider } from 'notistack';
 
 const StyledMaterialDesignContent = styled(MaterialDesignContent)(({ theme }) => ({
     '&.notistack-MuiContent-error': {
@@ -10,7 +10,7 @@ const StyledMaterialDesignContent = styled(MaterialDesignContent)(({ theme }) =>
     '&.notistack-MuiContent-success': {
         backgroundColor: theme.palette.success.main,
     },
-}))
+}));
 
 export function ToastProvider() {
     return (
@@ -26,5 +26,5 @@ export function ToastProvider() {
                 success: StyledMaterialDesignContent,
             }}
         />
-    )
+    );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import localFont from 'next/font/local';
+
 import type { ThemeOptions } from '@mui/material';
 
 export const FixelDisplay = localFont({

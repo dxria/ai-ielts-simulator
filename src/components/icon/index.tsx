@@ -1,6 +1,6 @@
-import { Box, type BoxProps } from "@mui/material";
+import { Box, type BoxProps } from '@mui/material';
 
-import { type IconName } from "@/types/name";
+import { type IconName } from '@/types/name';
 
 export { IconName };
 
@@ -14,20 +14,16 @@ export { IconName };
  */
 export function Icon({
     name,
-    size = "1rem",
     children,
+    size = '1rem',
     ...props
-}: BoxProps<"svg"> & {
+}: BoxProps<'svg'> & {
     name: IconName;
     size?: string | number;
 }) {
     if (children) {
         return (
-            <Box
-                gap={1}
-                component="span"
-                alignItems="center"
-                display="inline-flex">
+            <Box gap={1} component='span' alignItems='center' display='inline-flex'>
                 <Icon name={name} {...props} />
                 {children}
             </Box>
@@ -38,9 +34,9 @@ export function Icon({
         <Box
             width={size}
             height={size}
-            component="svg"
-            display="inline"
-            alignSelf="center"
+            component='svg'
+            display='inline'
+            alignSelf='center'
             {...props}>
             <use href={`/icons/sprite.svg#${name}`} />
         </Box>

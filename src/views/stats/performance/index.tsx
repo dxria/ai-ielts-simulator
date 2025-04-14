@@ -38,15 +38,15 @@ function PerformanceView({ userId, performanceId }: GetPerformanceInput) {
     return <PerformanceFeedback data={data} />;
 }
 
-function PerformanceFeedback({ data }) {
+function PerformanceFeedback({ data }: { data: any }) {
     const [activeTab, setActiveTab] = useState('part1');
     const feedback = JSON.parse(data.evaluation.feedback);
 
-    const handleChange = (event, newValue) => {
+    const handleChange = (event: any, newValue: any) => {
         setActiveTab(newValue);
     };
 
-    const renderTable = (part) => {
+    const renderTable = (part: any) => {
         const partData = feedback[part];
         if (!partData || (!partData.questions?.length && !partData.question))
             return <Typography>No feedback available.</Typography>;
@@ -66,7 +66,7 @@ function PerformanceFeedback({ data }) {
                     </TableHead>
                     <TableBody>
                         {partData.questions ? (
-                            partData.questions.map((q) => (
+                            partData.questions.map((q: any) => (
                                 <TableRow key={q.id}>
                                     <TableCell>{q.question}</TableCell>
                                     <TableCell>{q.answer || 'No answer'}</TableCell>

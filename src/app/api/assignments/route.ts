@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { Assignment } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 
 import { transformPrismaQuestionsToResponse } from '@/api/helpers';
 import ConnectToDB from '@/utils/db-connection';
+
+type AssignmentWithQuestions = Prisma.AssignmentGetPayload<{
+    include: { questions: true };
+}>;
 
 export async function GET(req: NextRequest) {
     try {
@@ -18,7 +22,7 @@ export async function GET(req: NextRequest) {
             orderBy: { createdAt: 'desc' },
         });
 
-        const transformed = assignments.map((a: Assignment) => ({
+        const transformed = assignments.map((a: AssignmentWithQuestions) => ({
             ...a,
             questions: transformPrismaQuestionsToResponse(a.questions),
         }));

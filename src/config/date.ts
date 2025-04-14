@@ -1,22 +1,22 @@
-import dayjs from 'dayjs'
-import 'dayjs/locale/uk'
-import calendar from 'dayjs/plugin/calendar'
-import localeData from 'dayjs/plugin/localeData'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import updateLocale from 'dayjs/plugin/updateLocale'
-import weekday from 'dayjs/plugin/weekday'
-import weekOfYear from 'dayjs/plugin/weekOfYear'
+import dayjs from 'dayjs';
+import 'dayjs/locale/uk';
+import calendar from 'dayjs/plugin/calendar';
+import localeData from 'dayjs/plugin/localeData';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import updateLocale from 'dayjs/plugin/updateLocale';
+import weekday from 'dayjs/plugin/weekday';
+import weekOfYear from 'dayjs/plugin/weekOfYear';
 
-dayjs.extend(weekday)
-dayjs.extend(weekOfYear)
-dayjs.extend(localeData)
-dayjs.extend(relativeTime)
-dayjs.extend(calendar)
-dayjs.extend(updateLocale)
-dayjs.locale('uk')
+dayjs.extend(weekday);
+dayjs.extend(weekOfYear);
+dayjs.extend(localeData);
+dayjs.extend(relativeTime);
+dayjs.extend(calendar);
+dayjs.extend(updateLocale);
+dayjs.locale('uk');
 
 export function setLocale(locale: string = 'uk') {
-    dayjs.locale(locale)
+    dayjs.locale(locale);
     dayjs.updateLocale(locale, {
         relativeTime: {
             y: 'рік',
@@ -41,7 +41,7 @@ export function setLocale(locale: string = 'uk') {
             sameElse: 'DD.MM.YYYY [о] HH:mm', // Default fallback
             lastWeek: '[Минулого] dddd [о] HH:mm', // Last Monday at 18:30
         },
-    })
+    });
 }
 
-export default dayjs
+export default dayjs;

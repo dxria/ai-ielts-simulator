@@ -1,8 +1,8 @@
-import { createTheme, type Breakpoint } from "@mui/material";
+import { type Breakpoint, createTheme } from '@mui/material';
 
-import components from "./components";
-import palette from "./palette";
-import typography from "./typography";
+import components from './components';
+import palette from './palette';
+import typography from './typography';
 
 const breakpoints: { [key in Breakpoint]: number } = {
     xs: 0,
@@ -15,13 +15,13 @@ const breakpoints: { [key in Breakpoint]: number } = {
 const mediaMatch: Record<Viewport, string> = {
     desktop: `(min-width:${breakpoints.lg}px)`,
     mobile: `(max-width:${breakpoints.sm - 0.05}px)`,
-    tablet: `(min-width:${breakpoints.sm}}px) and (max-width:${
-        breakpoints.lg - 0.05
-    }px)`,
+    tablet: `(min-width:${breakpoints.sm}}px) and (max-width:${breakpoints.lg - 0.05}px)`,
 };
 
 const theme = ({ viewport }: { viewport: Viewport }) => {
     return createTheme({
+        palette,
+        typography,
         breakpoints: {
             values: breakpoints,
         },
@@ -30,17 +30,13 @@ const theme = ({ viewport }: { viewport: Viewport }) => {
                 defaultProps: {
                     ssrMatchMedia: (query) => {
                         return {
-                            matches: viewport
-                                ? query === mediaMatch[viewport]
-                                : false,
+                            matches: viewport ? query === mediaMatch[viewport] : false,
                         };
                     },
                 },
             },
             ...components,
         },
-        typography,
-        palette,
     });
 };
 
