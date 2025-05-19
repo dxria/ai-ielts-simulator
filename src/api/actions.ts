@@ -11,19 +11,19 @@ import {
 import { Assignment } from './entities';
 
 export async function createAssignment(input: CreateAssignmentInput) {
-    const res = await client.post('/assignment', input);
+    const res = await client.post('/api/assignment', input);
     return res.data;
 }
 
 export async function getAssignment(input: GetAssignmentInput) {
-    const res = await client.get<Assignment>('/assignment', {
+    const res = await client.get<Assignment>('/api/assignment', {
         params: input,
     });
     return res.data;
 }
 
 export async function getAssignments(input: { userId: string }) {
-    const res = await client.get<Assignment[]>('/assignments', {
+    const res = await client.get<Assignment[]>('/api/assignments', {
         params: input,
     });
     return res.data;
@@ -32,26 +32,26 @@ export async function getAssignments(input: { userId: string }) {
 export async function contact(input: ContactInput): Promise<{
     success: boolean;
 }> {
-    return client.post('/get-in-touch', { data: input });
+    return client.post('/api/get-in-touch', { data: input });
 }
 
 export async function savePerformance(input: SavePerformanceInput) {
-    const res = await client.post('/performance', input);
+    const res = await client.post('/api/performance', input);
     return res.data;
 }
 
 export async function saveAnswers(input: SaveAnswersInput) {
-    const res = await client.post('/answers', input);
+    const res = await client.post('/api/answers', input);
     return res.data;
 }
 
 export async function getEvaluated(input: GetEvaluatedInput) {
-    const res = await client.post('/evaluation', input);
+    const res = await client.post('/api/evaluation', input);
     return res.data;
 }
 
 export async function getPerformance(input: GetPerformanceInput) {
-    const res = await client.get<Assignment[]>('/performance', {
+    const res = await client.get<Assignment[]>('/api/performance', {
         params: input,
     });
     return res.data;
