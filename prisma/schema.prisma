@@ -12,24 +12,24 @@ model Assignment {
   id           Int           @id @default(autoincrement())
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @default(now())
-  difficulty   String
   user         String
-  questions    Question[]
+  difficulty   String
   answers      Answer[]
   performances Performance[]
+  questions    Question[]
 }
 
 model Question {
-  id           Int          @id @default(autoincrement())
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
+  id           Int        @id @default(autoincrement())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
   part         Int
-  type         String
   topic        String
   text         String
-  assignment   Assignment   @relation(fields: [assignmentId], references: [id])
   assignmentId Int
+  type         String
   answers      Answer[]
+  assignment   Assignment @relation(fields: [assignmentId], references: [id])
 }
 
 model Answer {
@@ -38,12 +38,12 @@ model Answer {
   updatedAt     DateTime    @updatedAt
   speech        String
   user          String
-  assignment    Assignment  @relation(fields: [assignmentId], references: [id])
   assignmentId  Int
-  question      Question    @relation(fields: [questionId], references: [id])
   questionId    Int
-  performance   Performance @relation(fields: [performanceId], references: [id])
   performanceId Int
+  assignment    Assignment  @relation(fields: [assignmentId], references: [id])
+  performance   Performance @relation(fields: [performanceId], references: [id])
+  question      Question    @relation(fields: [questionId], references: [id])
 }
 
 model Performance {
@@ -51,12 +51,12 @@ model Performance {
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @default(now())
   user         String
-  answers      Answer[]
   startTime    DateTime
   endTime      DateTime
-  assignment   Assignment? @relation(fields: [assignmentId], references: [id])
   assignmentId Int?
+  answers      Answer[]
   evaluation   Evaluation?
+  assignment   Assignment? @relation(fields: [assignmentId], references: [id])
 }
 
 model Evaluation {
@@ -65,6 +65,6 @@ model Evaluation {
   updatedAt     DateTime    @default(now())
   user          String
   feedback      Json
-  performance   Performance @relation(fields: [performanceId], references: [id])
   performanceId Int         @unique
+  performance   Performance @relation(fields: [performanceId], references: [id])
 }

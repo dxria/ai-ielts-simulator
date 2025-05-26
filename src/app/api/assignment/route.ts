@@ -7,6 +7,7 @@ import {
 } from '@/api/helpers';
 import ConnectToDB from '@/utils/db-connection';
 import { chatSession } from '@/utils/gemini-ai';
+import prisma from '@/utils/prisma-client';
 
 export async function POST(req: NextRequest) {
     try {

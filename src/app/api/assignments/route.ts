@@ -4,6 +4,7 @@ import { Prisma } from '@prisma/client';
 
 import { transformPrismaQuestionsToResponse } from '@/api/helpers';
 import ConnectToDB from '@/utils/db-connection';
+import prisma from '@/utils/prisma-client';
 
 type AssignmentWithQuestions = Prisma.AssignmentGetPayload<{
     include: { questions: true };

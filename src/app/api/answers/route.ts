@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { SaveAnswersInput } from '@/api/dto';
 import ConnectToDB from '@/utils/db-connection';
+import prisma from '@/utils/prisma-client';
 
 export async function POST(req: NextRequest) {
     try {
