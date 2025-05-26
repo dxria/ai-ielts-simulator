@@ -8,7 +8,7 @@ import {
     SaveAnswersInput,
     SavePerformanceInput,
 } from './dto';
-import { Assignment } from './entities';
+import { Assignment, Performance } from './entities';
 
 export async function createAssignment(input: CreateAssignmentInput) {
     const res = await client.post('/api/assignment', input);
@@ -51,7 +51,7 @@ export async function getEvaluated(input: GetEvaluatedInput) {
 }
 
 export async function getPerformance(input: GetPerformanceInput) {
-    const res = await client.get<Assignment[]>('/api/performance', {
+    const res = await client.get<Performance>('/api/performance', {
         params: input,
     });
     return res.data;

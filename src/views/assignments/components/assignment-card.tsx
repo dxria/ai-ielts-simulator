@@ -3,8 +3,11 @@ import { useTranslations } from 'next-intl';
 import { Stack, Typography } from '@mui/material';
 
 import { Assignment } from '@/api/entities';
+import { Icon } from '@/components/icon';
 import { UniversalLink } from '@/components/universal-link';
 import dayjs from '@/config/date';
+
+import DetailsPopper from './detalis-popper';
 
 export default function AssignmentCard({ data }: { data: Assignment }) {
     const t = useTranslations();
@@ -16,6 +19,7 @@ export default function AssignmentCard({ data }: { data: Assignment }) {
             height='100%'
             display='flex'
             borderRadius={4}
+            position='relative'
             bgcolor='primary.light'
             component={UniversalLink}
             border='2px solid transparent'
@@ -31,6 +35,7 @@ export default function AssignmentCard({ data }: { data: Assignment }) {
                     boxShadow: '0px 60px 60px 0px #0000000D',
                 },
             }}>
+            <DetailsPopper />
             <Typography variant='body1' fontWeight={500}>
                 {t('assignments.card.created-at')}:
             </Typography>

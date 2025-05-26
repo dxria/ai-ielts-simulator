@@ -52,14 +52,41 @@ export type Feedback = {
     part3: FeedbackPart;
 };
 
-export type FeedbackPart = {
-    questions: {
-        answer: string;
-        comments: string;
-        fluency_and_coherence: string;
-        grammatical_range_and_accuracy: string;
-        id: number;
-        lexical_resource: string;
-    }[];
-    topic: string;
+// export type FeedbackPart = {
+//     questions: FeedbackQuestion[];
+//     topic: string;
+// };
+
+export type FeedbackPart =
+    | { questions: FeedbackQuestion[]; topic: string }
+    | (FeedbackQuestion & { topic: string });
+
+export type FeedbackQuestion = {
+    answer: string;
+    comments: string;
+    fluency_and_coherence: string;
+    grammatical_range_and_accuracy: string;
+    id: number;
+    lexical_resource: string;
+    question: string;
+};
+
+export type Evaluation = {
+    createdAt: string;
+    feedback: string;
+    id: number;
+    performanceId: number;
+    updatedAt: string;
+    user: string;
+};
+
+export type Performance = {
+    assignmentId: number;
+    createdAt: string;
+    endTime: string;
+    evaluation: Evaluation;
+    id: number;
+    startTime: string;
+    updatedAt: string;
+    user: string;
 };

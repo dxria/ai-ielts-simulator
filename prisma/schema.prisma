@@ -8,22 +8,11 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-enum QuestionType {
-  QUESTION
-  PROMPT
-}
-
-enum Difficulty {
-  easy
-  medium
-  hard
-}
-
 model Assignment {
   id           Int           @id @default(autoincrement())
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @default(now())
-  difficulty   Difficulty
+  difficulty   String
   user         String
   questions    Question[]
   answers      Answer[]
@@ -35,7 +24,7 @@ model Question {
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
   part         Int
-  type         QuestionType
+  type         String
   topic        String
   text         String
   assignment   Assignment   @relation(fields: [assignmentId], references: [id])

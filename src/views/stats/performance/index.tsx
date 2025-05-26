@@ -20,6 +20,7 @@ import {
 } from '@mui/material';
 
 import { GetPerformanceInput } from '@/api/dto';
+import { Feedback, FeedbackPart, FeedbackQuestion, Performance } from '@/api/entities';
 import { usePerformance } from '@/api/hooks';
 
 export default function Index({ performanceId }: Readonly<{ performanceId: number }>) {
@@ -38,18 +39,31 @@ function PerformanceView({ userId, performanceId }: Readonly<GetPerformanceInput
     return <PerformanceFeedback data={data} />;
 }
 
-function PerformanceFeedback({ data }: Readonly<{ data: any }>) {
-    const [activeTab, setActiveTab] = useState('part1');
+function PerformanceFeedback({ data }: Readonly<{ data: Performance }>) {
+    const [activeTab, setActiveTab] =
+        useState<Exclude<keyof Feedback, 'overall_feedback'>>('part1');
     const feedback = JSON.parse(data.evaluation.feedback);
-
+    console.log(feedback);
     const handleChange = (event: any, newValue: any) => {
         setActiveTab(newValue);
     };
 
-    const renderTable = (part: any) => {
+    function hasQuestions(
+        part: FeedbackPart,
+    ): part is { questions: FeedbackQuestion[]; topic: string } {
+        return 'questions' in part && Array.isArray(part.questions);
+    }
+
+    const renderTable = (part: Exclude<keyof Feedback, 'overall_feedback'>) => {
         const partData = feedback[part];
-        if (!partData || (!partData.questions?.length && !partData.question))
+
+        if (
+            !partData ||
+            (hasQuestions(partData) && partData.questions.length === 0) ||
+            (!hasQuestions(partData) && !('question' in partData && partData.question))
+        ) {
             return <Typography>No feedback available.</Typography>;
+        }
 
         return (
             <TableContainer sx={{ mt: 2 }} component={Paper}>
@@ -65,7 +79,7 @@ function PerformanceFeedback({ data }: Readonly<{ data: any }>) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {partData.questions ? (
+                        {'questions' in partData && partData.questions ? (
                             partData.questions.map((q: any) => (
                                 <TableRow key={q.id}>
                                     <TableCell>{q.question}</TableCell>
@@ -78,7 +92,7 @@ function PerformanceFeedback({ data }: Readonly<{ data: any }>) {
                                     <TableCell>{q.lexical_resource}</TableCell>
                                 </TableRow>
                             ))
-                        ) : (
+                        ) : 'question' in partData ? (
                             <TableRow key={partData.id}>
                                 <TableCell>{partData.question}</TableCell>
                                 <TableCell>{partData.answer || 'No answer'}</TableCell>
@@ -89,6 +103,8 @@ function PerformanceFeedback({ data }: Readonly<{ data: any }>) {
                                 </TableCell>
                                 <TableCell>{partData.lexical_resource}</TableCell>
                             </TableRow>
+                        ) : (
+                            <></>
                         )}
                     </TableBody>
                 </Table>

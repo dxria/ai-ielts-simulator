@@ -8,6 +8,7 @@ export type IconName =
 	| "chevron-right"
 	| "clipboard"
 	| "close"
+	| "ellipsis-vertical"
 	| "lightbulb"
 	| "minus"
 	| "plus"

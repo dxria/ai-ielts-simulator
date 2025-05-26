@@ -32,7 +32,6 @@ export async function GET(req: NextRequest) {
             where: { user: userId, id: +performanceId },
         });
 
-        console.log(performance);
         return NextResponse.json(performance, { status: 200 });
     } catch (error) {
         return NextResponse.json({ message: error }, { status: 500 });
