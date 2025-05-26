@@ -7,6 +7,7 @@ import { Box, Button } from '@mui/material';
 import { header } from '@/constant';
 
 import { UniversalLink } from '../universal-link';
+import LocaleSelector from './locale-selector';
 import Logo from './logo';
 
 export function Header() {
@@ -45,8 +46,6 @@ export function Header() {
                             {t(i.title)}
                         </UniversalLink>
                     ))}
-                    {/* <UniversalLink href='/dashboard'>dashboard</UniversalLink>
-                    <UniversalLink href='/assignment'>assignment</UniversalLink> */}
                 </Box>
                 {isSignedIn ? (
                     <Box gap={1.5} display='flex' alignItems='center'>
@@ -64,9 +63,11 @@ export function Header() {
                         <Button
                             href='/sign-up'
                             variant='contained'
+                            sx={{ px: 2, py: 1 }}
                             component={UniversalLink}>
                             {t('header.sign-up')}
                         </Button>
+                        <LocaleSelector />
                     </Box>
                 )}
             </Box>

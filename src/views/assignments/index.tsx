@@ -29,7 +29,7 @@ function View({ userId }: { userId: string }) {
             <PageHeader title={t('title')} right={<CreateAssignment />} />
             <Grid container spacing={2} alignItems='stretch' justifyContent='flex-start'>
                 {data.map((i, idx) => (
-                    <Grid key={idx} size={{ sm: 6, md: 4, xs: 13 }}>
+                    <Grid key={`assignment-${idx}`} size={{ sm: 6, md: 4, xs: 13 }}>
                         <AssignmentCard data={i} />
                     </Grid>
                 ))}

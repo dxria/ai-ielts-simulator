@@ -48,7 +48,7 @@ export function MobileSlider({ slides }: { slides: ReactNode[] }) {
                         }}>
                         {slides.map((slide, idx) => (
                             <Box
-                                key={idx}
+                                key={`slide-${idx}`}
                                 width='100%'
                                 flexShrink={0}
                                 display='inline-block'>
@@ -66,7 +66,7 @@ export function MobileSlider({ slides }: { slides: ReactNode[] }) {
                     <Box p={1} display='flex' alignItems='center' justifyContent='center'>
                         {slides.map((_, index) => (
                             <Box
-                                key={index}
+                                key={`slides-${index}`}
                                 mx={0.5}
                                 borderRadius={3}
                                 width={{ xs: 8, sm: 8, md: 12 }}

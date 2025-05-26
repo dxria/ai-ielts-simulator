@@ -35,9 +35,7 @@ const isProtectedRoute = createRouteMatcher([
 
 export const config = {
     matcher: [
-        // Skip Next.js internals and all static files, unless found in search params
         '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-        // Always run for API routes
         '/(api|trpc)(.*)',
     ],
 };
@@ -75,45 +73,7 @@ export default clerkMiddleware(async (auth, req) => {
 
     const res = intlMiddleware(req);
 
-    // Set a new response header `x-viewport`
     res.headers.set('x-viewport', viewport);
 
     return res;
 });
-
-// export default async function middleware(req: NextRequest) {
-//     const pathname = req.nextUrl.pathname;
-
-//     if (
-//         pathname.startsWith('/_next') ||
-//         pathname.includes('/api/') ||
-//         pathname.includes('/api-next/') ||
-//         PUBLIC_FILE.test(pathname)
-//     ) {
-//         return;
-//     }
-//     const viewport = getViewport(req);
-
-//     const currentLocale = req.nextUrl.pathname.split('/')[1] as string;
-
-//     if (LOCALES.includes(currentLocale as (typeof LOCALES)[number])) {
-//         const res = intlMiddleware(req);
-//         res.headers.set('x-viewport', viewport);
-//         return res;
-//     }
-
-//     const locale = getLocaleFromAcceptLanguage(req);
-
-//     const url = req.nextUrl.clone();
-//     if (!url.pathname.startsWith(`/${locale}`)) {
-//         url.pathname = `/${locale}${url.pathname}`;
-//         return NextResponse.redirect(url);
-//     }
-
-//     const res = intlMiddleware(req);
-
-//     // Set a new response header `x-viewport`
-//     res.headers.set('x-viewport', viewport);
-
-//     return res;
-// }

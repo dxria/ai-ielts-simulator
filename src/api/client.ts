@@ -1,13 +1,8 @@
 import axios from 'axios';
 
-// import { API_URL } from '@/config';
-
 const TIMEOUT = 360000;
 
-const client = axios.create({
-    timeout: TIMEOUT,
-    // baseURL: `${API_URL}/api`,
-});
+const client = axios.create({ timeout: TIMEOUT });
 
 client.interceptors.request.use(
     async (req) => {
@@ -19,7 +14,7 @@ client.interceptors.request.use(
 
         return req;
     },
-    (error) => Promise.reject(error),
+    (error) => Promise.reject(new Error(error)),
 );
 
 export default client;

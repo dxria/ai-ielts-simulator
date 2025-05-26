@@ -68,9 +68,7 @@ export function transformPrismaQuestionsToResponse(
 
     const groupedByPart: Record<number, QuestionEntity[]> = questions.reduce(
         (acc, question) => {
-            if (!acc[question.part]) {
-                acc[question.part] = [];
-            }
+            acc[question.part] ??= [];
             acc[question.part].push(question);
             return acc;
         },
@@ -146,9 +144,7 @@ export function transformPrismaQuestionsToResponseWithAnswers(
 
     const groupedByPart: Record<number, QuestionEntity[]> = questions.reduce(
         (acc, question) => {
-            if (!acc[question.part]) {
-                acc[question.part] = [];
-            }
+            acc[question.part] ??= [];
             acc[question.part].push(question);
             return acc;
         },

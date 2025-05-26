@@ -18,7 +18,7 @@ export function PageTitle({ children }: React.PropsWithChildren) {
     );
 }
 
-export function PageHeader({ back, title, right, backHref }: PageHeaderProps) {
+export function PageHeader({ back, title, right, backHref }: Readonly<PageHeaderProps>) {
     return (
         <Stack mb={3} direction='row' alignItems='center' justifyContent='space-between'>
             <Stack direction='row' alignItems='center'>

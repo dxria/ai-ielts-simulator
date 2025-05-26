@@ -1,13 +1,13 @@
 'use client';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
 import {
-    Backdrop,
     Dialog,
     DialogContent,
     type DialogProps,
     DialogTitle,
     IconButton,
+    Backdrop as MBackdrop,
 } from '@mui/material';
 
 import { Icon } from '@/components/icon';
@@ -21,6 +21,12 @@ type ModalProps = BaseModalProps & {
     maxWidth?: DialogProps['maxWidth'];
     title: React.ReactNode;
 };
+
+function Backdrop({ open, onClick }: { onClick: () => void; open: boolean }) {
+    return (
+        <MBackdrop open={open} sx={{ backgroundColor: '#090F4E20' }} onClick={onClick} />
+    );
+}
 
 export function useModalState() {
     const [open, setOpen] = useState<boolean>(false);
@@ -51,13 +57,7 @@ export function Modal({
             open={open}
             maxWidth={maxWidth}
             slots={{
-                backdrop: () => (
-                    <Backdrop
-                        open={open}
-                        sx={{ backgroundColor: '#090F4E20' }}
-                        onClick={onClose}
-                    />
-                ),
+                backdrop: () => <Backdrop open={open} onClick={onClose} />,
             }}
             PaperProps={{
                 sx: {

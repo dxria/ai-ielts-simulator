@@ -9,5 +9,5 @@ export const header: { href: string; id: number; title: any }[] = [
 
 export const linking: { href: string; icon: IconName; id: number; title: any }[] = [
     { id: 2, icon: 'clipboard', href: '/assignment', title: 'linking.assignments' },
-    { id: 3, icon: 'chart', href: '/dashboard', title: 'linking.dashboard' },
+    // { id: 3, icon: 'chart', href: '/dashboard', title: 'linking.dashboard' },
 ];

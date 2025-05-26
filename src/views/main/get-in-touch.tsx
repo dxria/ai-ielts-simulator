@@ -162,9 +162,7 @@ export default function GetInTouch() {
                             <Controller
                                 name='agreement'
                                 control={control}
-                                rules={{
-                                    required: true,
-                                }}
+                                rules={{ required: true }}
                                 render={({ field }) => (
                                     <FormControlLabel
                                         sx={{
@@ -185,9 +183,7 @@ export default function GetInTouch() {
                                         control={
                                             <Checkbox
                                                 disableRipple
-                                                checked={
-                                                    field.value === 'true' ? true : false
-                                                }
+                                                checked={field.value === 'true'}
                                                 checkedIcon={
                                                     <Icon size={24} name='checked-box' />
                                                 }

@@ -15,7 +15,7 @@ import { useAssignmentContext } from '@/providers/assignment/assignment-provider
 import OngoingAssignment from './ongoing-assignment';
 import WebCam from './web-cam';
 
-export default function Page({ assignmentId }: { assignmentId: number }) {
+export default function Page({ assignmentId }: Readonly<{ assignmentId: number }>) {
     const { user } = useUser();
 
     if (!user) return null;
@@ -23,7 +23,7 @@ export default function Page({ assignmentId }: { assignmentId: number }) {
     return <View userId={user.id} assignmentId={assignmentId} />;
 }
 
-function View({ userId, assignmentId }: GetAssignmentInput) {
+function View({ userId, assignmentId }: Readonly<GetAssignmentInput>) {
     const { data } = useAssignment({ userId, assignmentId });
     const t = useTranslations();
 

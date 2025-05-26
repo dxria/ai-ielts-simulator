@@ -3,7 +3,14 @@ import * as React from 'react';
 import { useTranslations } from 'next-intl';
 
 import { SignOutButton, UserButton } from '@clerk/nextjs';
-import { Button, ClickAwayListener, IconButton, Typography } from '@mui/material';
+import {
+    Button,
+    ClickAwayListener,
+    Divider,
+    IconButton,
+    Stack,
+    Typography,
+} from '@mui/material';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -17,6 +24,7 @@ import { linking } from '@/constant';
 
 import { Icon } from '../icon';
 import { UniversalLink } from '../universal-link';
+import LocaleSelector from './locale-selector';
 
 const drawerWidth = 240;
 
@@ -133,35 +141,74 @@ export default function MiniDrawer({ children }: React.PropsWithChildren) {
                         open={open}
                         variant='permanent'
                         sx={{ bgcolor: 'primary.light' }}>
-                        <List sx={{ pt: 8 }}>
-                            {linking.map(({ id, href, icon, title }) => (
-                                <ListItem
-                                    key={id}
-                                    disablePadding
-                                    href={href}
-                                    sx={{ display: 'block' }}
-                                    component={UniversalLink}>
-                                    <ListItemButton
-                                        sx={[
-                                            { px: 2.5, minHeight: 48 },
-                                            open
-                                                ? { justifyContent: 'initial' }
-                                                : { justifyContent: 'center' },
-                                        ]}
-                                        onClick={() => setOpen(false)}>
-                                        <ListItemIcon
-                                            sx={[
-                                                {
+                        <Stack
+                            pb={5}
+                            gap={1}
+                            height='100%'
+                            justifyContent='space-between'>
+                            <List sx={{ pt: 8 }}>
+                                {linking.map(({ id, href, icon, title }) => (
+                                    <ListItem
+                                        key={id}
+                                        disablePadding
+                                        href={href}
+                                        sx={{ display: 'block' }}
+                                        component={UniversalLink}>
+                                        <ListItemButton
+                                            sx={{
+                                                px: 2.5,
+                                                minHeight: 48,
+                                                justifyContent: open
+                                                    ? 'initial'
+                                                    : 'center',
+                                            }}
+                                            onClick={() => setOpen(false)}>
+                                            <ListItemIcon
+                                                sx={{
                                                     minWidth: 0,
+                                                    mr: open ? 3 : 'auto',
                                                     color: 'text.secondary',
                                                     justifyContent: 'center',
-                                                },
-                                                open ? { mr: 3 } : { mr: 'auto' },
-                                            ]}>
-                                            <Icon size={20} name={icon} />
+                                                }}>
+                                                <Icon size={20} name={icon} />
+                                            </ListItemIcon>
+                                            <ListItemText
+                                                primary={t(title)}
+                                                sx={{
+                                                    opacity: open ? 1 : 0,
+
+                                                    '& .MuiListItemText-primary': {
+                                                        fontSize: 16,
+                                                        lineHeight: 0,
+                                                        fontWeight: 400,
+                                                        // color: 'text.secondary',
+                                                    },
+                                                }}
+                                            />
+                                        </ListItemButton>
+                                    </ListItem>
+                                ))}
+                            </List>
+                            <Stack gap={1}>
+                                <Divider />
+                                <ListItem disablePadding sx={{ display: 'block' }}>
+                                    <Box
+                                        px={2.5}
+                                        display='flex'
+                                        minHeight={48}
+                                        alignItems='center'
+                                        justifyContent={open ? 'initial' : 'center'}>
+                                        <ListItemIcon
+                                            sx={{
+                                                minWidth: 0,
+                                                mr: open ? 3 : 'auto',
+                                                color: 'text.secondary',
+                                                justifyContent: 'center',
+                                            }}>
+                                            <Icon size={20} name='translate' />
                                         </ListItemIcon>
                                         <ListItemText
-                                            primary={t(title)}
+                                            primary={<LocaleSelector />}
                                             sx={{
                                                 opacity: open ? 1 : 0,
 
@@ -173,10 +220,10 @@ export default function MiniDrawer({ children }: React.PropsWithChildren) {
                                                 },
                                             }}
                                         />
-                                    </ListItemButton>
+                                    </Box>
                                 </ListItem>
-                            ))}
-                        </List>
+                            </Stack>
+                        </Stack>
                     </Drawer>
                     <Box width='100%'>{children}</Box>
                 </Box>

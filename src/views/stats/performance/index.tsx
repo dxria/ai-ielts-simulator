@@ -22,7 +22,7 @@ import {
 import { GetPerformanceInput } from '@/api/dto';
 import { usePerformance } from '@/api/hooks';
 
-export default function Index({ performanceId }: { performanceId: number }) {
+export default function Index({ performanceId }: Readonly<{ performanceId: number }>) {
     const { user } = useUser();
 
     if (!user) return null;
@@ -30,7 +30,7 @@ export default function Index({ performanceId }: { performanceId: number }) {
     return <PerformanceView userId={user.id} performanceId={performanceId} />;
 }
 
-function PerformanceView({ userId, performanceId }: GetPerformanceInput) {
+function PerformanceView({ userId, performanceId }: Readonly<GetPerformanceInput>) {
     const { data } = usePerformance({ userId, performanceId });
     console.log(data);
     if (!data) return null;
@@ -38,7 +38,7 @@ function PerformanceView({ userId, performanceId }: GetPerformanceInput) {
     return <PerformanceFeedback data={data} />;
 }
 
-function PerformanceFeedback({ data }: { data: any }) {
+function PerformanceFeedback({ data }: Readonly<{ data: any }>) {
     const [activeTab, setActiveTab] = useState('part1');
     const feedback = JSON.parse(data.evaluation.feedback);
 
