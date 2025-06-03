@@ -41,9 +41,13 @@ export const config = {
 };
 
 export default clerkMiddleware(async (auth, req) => {
-    if (isProtectedRoute(req)) await auth.protect();
-
     const pathname = req.nextUrl.pathname;
+
+    if (pathname === '/api/get-in-touch') {
+        return;
+    }
+
+    if (isProtectedRoute(req)) await auth.protect();
 
     if (
         pathname.startsWith('/_next') ||
