@@ -18,7 +18,7 @@ export default function Page() {
     return <View userId={user.id} />;
 }
 
-function View({ userId }: { userId: string }) {
+function View({ userId }: Readonly<{ userId: string }>) {
     const { data } = useAssignments({ userId });
     const t = useTranslations('assignments');
 

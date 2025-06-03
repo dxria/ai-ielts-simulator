@@ -3,13 +3,12 @@ import { useTranslations } from 'next-intl';
 import { Stack, Typography } from '@mui/material';
 
 import { Assignment } from '@/api/entities';
-import { Icon } from '@/components/icon';
 import { UniversalLink } from '@/components/universal-link';
 import dayjs from '@/config/date';
 
 import DetailsPopper from './detalis-popper';
 
-export default function AssignmentCard({ data }: { data: Assignment }) {
+export default function AssignmentCard({ data }: Readonly<{ data: Assignment }>) {
     const t = useTranslations();
 
     return (

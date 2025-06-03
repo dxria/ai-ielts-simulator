@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, IconButton, Popper } from '@mui/material';
+import { Box, IconButton, Popper } from '@mui/material';
 
 import { Icon } from '@/components/icon';
 

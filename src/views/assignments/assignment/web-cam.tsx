@@ -10,11 +10,11 @@ export default function WebCam({
     enabled,
     onEnable,
     onDisable,
-}: {
+}: Readonly<{
     enabled: boolean;
     onDisable(): void;
     onEnable(): void;
-}) {
+}>) {
     return (
         <Stack gap={2} minHeight='100%' justifyContent='space-between'>
             {enabled ? (

@@ -1,5 +1,5 @@
 'use client';
-import { memo, useState } from 'react';
+import { useState } from 'react';
 
 import {
     Dialog,
@@ -22,7 +22,7 @@ type ModalProps = BaseModalProps & {
     title: React.ReactNode;
 };
 
-function Backdrop({ open, onClick }: { onClick: () => void; open: boolean }) {
+function Backdrop({ open, onClick }: Readonly<{ onClick: () => void; open: boolean }>) {
     return (
         <MBackdrop open={open} sx={{ backgroundColor: '#090F4E20' }} onClick={onClick} />
     );

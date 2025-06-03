@@ -23,7 +23,7 @@ type OngoingAssignmentProps = { assignmentId: number; questions: QuestionsRespon
 export default function OngoingAssignment({
     questions,
     assignmentId,
-}: OngoingAssignmentProps) {
+}: Readonly<OngoingAssignmentProps>) {
     const t = useTranslations();
     const [active, setActive] = useState<Question | QuestionWithPrompt>(
         questions.part1[0].questions[0],

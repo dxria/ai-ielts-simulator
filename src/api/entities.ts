@@ -52,11 +52,6 @@ export type Feedback = {
     part3: FeedbackPart;
 };
 
-// export type FeedbackPart = {
-//     questions: FeedbackQuestion[];
-//     topic: string;
-// };
-
 export type FeedbackPart =
     | { questions: FeedbackQuestion[]; topic: string }
     | (FeedbackQuestion & { topic: string });

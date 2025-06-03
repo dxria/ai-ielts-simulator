@@ -34,7 +34,7 @@ const faq: { answer: any; id: number; question: any }[] = [
     },
 ];
 
-export default function FAQ() {
+export default function Faq() {
     const t = useTranslations('main.faq');
 
     return (

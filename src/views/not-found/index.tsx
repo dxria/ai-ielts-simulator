@@ -7,7 +7,7 @@ import { Button, Container, Typography } from '@mui/material';
 
 import { redirect } from '@/intl/navigation';
 
-export function NotFound({ locale }: { locale: Locale }) {
+export function NotFound({ locale }: Readonly<{ locale: Locale }>) {
     const t = useTranslations('not-found');
 
     return (

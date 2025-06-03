@@ -11,7 +11,11 @@ type QuestionsTabProps = {
     questions: QuestionsResponse;
 };
 
-export default function QuestionsTab({ active, onClick, questions }: QuestionsTabProps) {
+export default function QuestionsTab({
+    active,
+    onClick,
+    questions,
+}: Readonly<QuestionsTabProps>) {
     return (
         <Stack gap={1}>
             <Typography variant='body1' fontWeight={500}>

@@ -8,12 +8,12 @@ export function QuestionChip({
     onClick,
     activeId,
     questionId,
-}: {
+}: Readonly<{
     activeId: number;
     onClick(): void;
     questionId: number;
     text: string;
-}) {
+}>) {
     const { answers } = useAssignmentContext();
 
     const isDone = Object.entries(answers).find(

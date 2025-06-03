@@ -2,7 +2,7 @@ import { Box, Container } from '@mui/material';
 
 import { Footer } from '@/components/layout/footer';
 
-import FAQ from './faq';
+import Faq from './faq';
 import GetInTouch from './get-in-touch';
 import HeroSection from './hero-section';
 import WhatWeOffer from './what-we-offer';
@@ -28,7 +28,7 @@ export default function Main() {
                     <HeroSection />
                     <WhatWeOffer />
                 </Box>
-                <FAQ />
+                <Faq />
                 <GetInTouch />
                 <Footer />
             </Container>

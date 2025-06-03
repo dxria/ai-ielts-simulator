@@ -17,7 +17,7 @@ export default function QuestionRecordTab({
     saving,
     record,
     handleFinish,
-}: QuestionsTabProps) {
+}: Readonly<QuestionsTabProps>) {
     const { enabled, setEnabled } = useAssignmentContext();
 
     return (

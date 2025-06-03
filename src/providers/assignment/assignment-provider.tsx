@@ -29,7 +29,7 @@ export function useAssignmentContext() {
     return context;
 }
 
-export function AssignmentProvider({ children }: AssignmentContextProps) {
+export function AssignmentProvider({ children }: Readonly<AssignmentContextProps>) {
     const [enabled, setEnabled] = useState<boolean>(false);
     const [started, setStarted] = useState<boolean>(false);
     const [answers, setAnswers] = useState<AssignmentAnswerInput>({});

@@ -2,11 +2,11 @@ import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 
 import { Box } from '@mui/material';
 
-export default function Slider({ children }: { children: ReactNode[] }) {
+export default function Slider({ children }: Readonly<{ children: ReactNode[] }>) {
     return <MobileSlider slides={children} />;
 }
 
-export function MobileSlider({ slides }: { slides: ReactNode[] }) {
+export function MobileSlider({ slides }: Readonly<{ slides: ReactNode[] }>) {
     const [activeSlide, setActiveSlide] = useState(1);
 
     const slideCount = slides.length;
