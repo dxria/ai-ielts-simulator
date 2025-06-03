@@ -32,7 +32,8 @@ export async function getAssignments(input: { userId: string }) {
 export async function contact(input: ContactInput): Promise<{
     success: boolean;
 }> {
-    return client.post('/api/get-in-touch', { data: input });
+    const res = await client.post('/api/get-in-touch', { data: input });
+    return res.data;
 }
 
 export async function savePerformance(input: SavePerformanceInput) {

@@ -3,9 +3,14 @@ import nodemailer, { type Transporter } from 'nodemailer';
 import { ContactInput } from '@/api/dto';
 
 const transporter = nodemailer.createTransport({
-    secure: false,
+    secure: true,
+    service: 'Gmail',
     host: process.env.MAIL_HOST,
     port: Number(process.env.MAIL_PORT),
+    auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
+    },
 });
 
 class MailService {

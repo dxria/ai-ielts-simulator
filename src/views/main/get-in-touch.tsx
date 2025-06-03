@@ -63,6 +63,7 @@ export default function GetInTouch() {
                 <form
                     onSubmit={handleSubmit(async (values) => {
                         const res = await contact(values);
+                        console.log(res);
                         setSuccess(res.success);
                         modalState.triggerOpen();
                         reset();
@@ -117,8 +118,8 @@ export default function GetInTouch() {
                                     rules={{
                                         required: true,
                                         pattern: {
-                                            value: /\S+@\S+\.\S+/,
                                             message: t('form.email-validation-helper'),
+                                            value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
                                         },
                                     }}
                                     render={({ field }) => (
@@ -226,7 +227,9 @@ export default function GetInTouch() {
                     open={modalState.open}
                     title={t(`dialog.success-${success}.title`)}
                     onClose={modalState.triggerClose}>
-                    {t(`dialog.success-${success}.content`)}
+                    <Typography align='left' variant='body2'>
+                        {t(`dialog.success-${success}.content`)}
+                    </Typography>
                 </Modal>
             </Box>
         </Stack>

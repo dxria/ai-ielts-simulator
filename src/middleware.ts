@@ -25,7 +25,7 @@ const getLocaleFromAcceptLanguage = (req: NextRequest) => {
     return 'en';
 };
 
-const PUBLIC_FILE = /\.(.*)$/;
+const PUBLIC_FILE = /\.([^.]+)$/;
 
 const isProtectedRoute = createRouteMatcher([
     '/:locale/dashboard(.*)',
