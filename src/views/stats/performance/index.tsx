@@ -33,8 +33,8 @@ export default function Index({ performanceId }: Readonly<{ performanceId: numbe
 
 function PerformanceView({ userId, performanceId }: Readonly<GetPerformanceInput>) {
     const { data } = usePerformance({ userId, performanceId });
-    console.log(data);
-    if (!data) return null;
+
+    if (!data || !data.evaluation) return null;
 
     return <PerformanceFeedback data={data} />;
 }
@@ -42,6 +42,9 @@ function PerformanceView({ userId, performanceId }: Readonly<GetPerformanceInput
 function PerformanceFeedback({ data }: Readonly<{ data: Performance }>) {
     const [activeTab, setActiveTab] =
         useState<Exclude<keyof Feedback, 'overall_feedback'>>('part1');
+
+    if (!data.evaluation) return null;
+
     const feedback = JSON.parse(data.evaluation.feedback);
     console.log(feedback);
     const handleChange = (event: any, newValue: any) => {

@@ -7,7 +7,7 @@ import ConnectToDB from '@/utils/db-connection';
 import prisma from '@/utils/prisma-client';
 
 type AssignmentWithQuestions = Prisma.AssignmentGetPayload<{
-    include: { questions: true };
+    include: { performances: { include: { evaluation: true } }; questions: true };
 }>;
 
 export async function GET(req: NextRequest) {
@@ -19,12 +19,13 @@ export async function GET(req: NextRequest) {
 
         const assignments = await prisma.assignment.findMany({
             where: { user: userId },
-            include: { questions: true },
             orderBy: { createdAt: 'desc' },
+            include: { questions: true, performances: { include: { evaluation: true } } },
         });
 
         const transformed = assignments.map((a: AssignmentWithQuestions) => ({
             ...a,
+            performances: a.performances.filter((i) => i.evaluation),
             questions: transformPrismaQuestionsToResponse(a.questions),
         }));
 

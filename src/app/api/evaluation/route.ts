@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
 
         const result =
             await chatSession.sendMessage(`Please, generate feedback for the recorded with SpeechToText student answers for ielts speaking exam simulation. Rate the answers by fluency and coherence, grammatical range and accuracy, lexical resourse, use the rating range of IELTS exam. Keep in mind the possible mismatches, that can be the result of Speech Recognition tools mistakes, but do not mention such errors in your comments. Format the "answer" field texts (but do not change anything, except for sentence punctuation). Give your answer as JSON object with this strict format:
-                                          { part1 | part2 | part3: { questions: { id: number; question: string; answer: string; comments: string; fluency_and_coherence: string (the mark); grammatical_range_and_accuracy: string (the mark); lexical_resource: string (the mark);}[]; topic: string;}; overall_feedback: string (include approximate mark, commentary); }.                         
+                                          { part1 | part2 | part3: { questions: { id: number; question: string; answer: string; comments: string; fluency_and_coherence: string (the mark); grammatical_range_and_accuracy: string (the mark); lexical_resource: string (the mark);}[]; topic: string;}; overall_feedback: string (include commentary); approximate_mark: number (overall score)}.                         
                                           Here are the questions and answers of the student: ${JSON.stringify(transformed)}`);
 
         const feedback = JSON.parse(

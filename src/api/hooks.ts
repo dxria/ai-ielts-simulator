@@ -40,7 +40,7 @@ export function useAssignment(input: GetAssignmentInput) {
 
 export function useAssignments(input: { userId: string }) {
     const { data, isPending: loading } = useQuery({
-        queryKey: [...queryKey],
+        queryKey: [...queryKey, 'assignments'],
         queryFn: () => actions.getAssignments({ ...input }),
     });
 
@@ -86,7 +86,7 @@ export function useGetEvaluated() {
         onError: status.error,
         mutationFn: actions.getEvaluated,
         onSuccess() {
-            queryClient.invalidateQueries({ queryKey: queryKey });
+            queryClient.invalidateQueries({ exact: false, queryKey: queryKey });
             status.success('success-evaluated');
         },
     });
@@ -96,7 +96,7 @@ export function useGetEvaluated() {
 
 export function usePerformance(input: GetPerformanceInput) {
     const { data, isPending: loading } = useQuery({
-        queryKey: [...queryKey],
+        queryKey: [...queryKey, 'performance'],
         queryFn: () => actions.getPerformance({ ...input }),
     });
 

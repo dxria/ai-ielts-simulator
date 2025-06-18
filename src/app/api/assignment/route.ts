@@ -30,7 +30,6 @@ export async function POST(req: NextRequest) {
 
         const questions = transformQuestionsResponseToPrisma(data, entry.id);
         await prisma.question.createMany({ data: questions });
-
         return NextResponse.json(entry, { status: 200 });
     } catch (error) {
         return NextResponse.json({ message: error }, { status: 500 });

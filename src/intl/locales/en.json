@@ -98,7 +98,8 @@
             "level": "Level",
             "main-topics": "Main topics"
         },
-        "button": "Add new session"
+        "button": "Add new session",
+        "no-performances": "No performances yet"
     },
     "ongoing-assignment": {
         "meta-title": "SpeakPro | Ongoing assignment",

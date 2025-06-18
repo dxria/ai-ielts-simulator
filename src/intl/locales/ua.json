@@ -98,7 +98,8 @@
             "level": "Рівень",
             "main-topics": "Ключові теми"
         },
-        "button": "Додати новий тест"
+        "button": "Додати новий тест",
+        "no-performances": "Проходжень ще не було"
     },
     "ongoing-assignment": {
         "meta-title": "SpeakPro | Проходження завдання",

@@ -92,6 +92,7 @@ export default function CreateAssignment() {
                         onClick={async () => {
                             const input = { difficulty, userId: user?.id ?? '' };
                             await createAssignment(input);
+
                             modalState.triggerClose();
                         }}>
                         {loading ? t('action.creating') : t('action.create')}

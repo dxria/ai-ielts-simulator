@@ -2,6 +2,7 @@ export type Assignment = {
     createdAt: Date;
     difficulty: 'easy' | 'medium' | 'hard';
     id: number;
+    performances: Performance[];
     questions: QuestionsResponse;
     updatedAt: Date;
     user: string;
@@ -79,7 +80,7 @@ export type Performance = {
     assignmentId: number;
     createdAt: string;
     endTime: string;
-    evaluation: Evaluation;
+    evaluation?: Evaluation;
     id: number;
     startTime: string;
     updatedAt: string;

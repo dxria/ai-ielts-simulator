@@ -34,7 +34,7 @@ export default function AssignmentCard({ data }: Readonly<{ data: Assignment }>)
                     boxShadow: '0px 60px 60px 0px #0000000D',
                 },
             }}>
-            <DetailsPopper />
+            <DetailsPopper performances={data.performances} />
             <Typography variant='body1' fontWeight={500}>
                 {t('assignments.card.created-at')}:
             </Typography>
